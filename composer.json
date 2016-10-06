@@ -1,0 +1,20 @@
+{
+    "name": "isaiascardenas/correoschile",
+    "description": "domcrawler correos chile",
+    "authors": [
+        {
+            "name": "IsaiasCardenas",
+            "email": "isaias.cardenas@usach.cl"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.2",
+        "symfony/dom-crawler": "~3.1",
+        "symfony/css-selector": "~3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "IsaiasCardenas\\CorreosChile\\": "src/"
+        }
+    }
+}
