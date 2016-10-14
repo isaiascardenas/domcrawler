@@ -24,11 +24,9 @@ Una petición exitosa se retorna un objeto json con 5 atributos:
 
 * exist: Es un booleano que representa se existe o no el codigo tracking.
 * delivered: Es un booleano que representa si el tracking fue entregado o no.
-* tracking_number: Es un string que contiene el codigo de tracking
-* data: Es un string que contiene la razon social.
-* history: Es un string que contiene la razon social.
-
-/////////////////////////
+* tracking_number: Es un string que contiene el codigo de tracking.
+* data: Es un json que contiene el ultimo estado del tracking y los datos de entrega si existen.
+* history: Es un json que contiene todo el historial del seguimiento del tracking.
 
 ![Output](/screenshots/output.png?raw=true "Sii respuesta")
 
