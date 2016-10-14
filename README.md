@@ -30,7 +30,6 @@ Una petición exitosa se retorna un objeto json con 5 atributos:
 
 ![Output](/screenshots/output.png?raw=true "Sii respuesta")
 
-
 En caso de que el tracking no haya sido entregado aun el json tendría la siguiente forma:
 
 ![Output](/screenshots/output.png?raw=true "Sii respuesta")
@@ -39,8 +38,10 @@ Una petición en la que el código de tracking no exista tendrá la siguiente es
 
 ![Output](/screenshots/output.png?raw=true "Sii respuesta")
 
+
 ## Dependencias
 
 * [Guzzle](https://github.com/guzzle/guzzle)
 * [DomCrawler](https://github.com/symfony/DomCrawler)
+* [Css-Selector](https://github.com/symfony/css-selector)
 
