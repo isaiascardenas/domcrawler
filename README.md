@@ -23,8 +23,8 @@ var_dump($domCrawler->getData());
 Una petición exitosa se retorna un objeto json con 5 atributos:
 
 * exist: Es un booleano que representa se existe o no el codigo tracking.
-* delivered: Es un string que contiene la razon social.
-* tracking_number: Es un string que contiene la razon social.
+* delivered: Es un booleano que representa si el tracking fue entregado o no.
+* tracking_number: Es un string que contiene el codigo de tracking
 * data: Es un string que contiene la razon social.
 * history: Es un string que contiene la razon social.
 
