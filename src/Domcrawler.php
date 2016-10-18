@@ -13,17 +13,23 @@ class Domcrawler
     private $tracking;
     const GENERAL_TABLE = '#pnlEnvio > table';
     const DELIVERY_TABLE = '#Panel_Entrega > table';
+    const ERROR_TABLE = '#pnlError > font';
 
     public function __construct($trackingCode)
     {
+        $request = new Request();
+        $this->crawler = new Crawler($request->getHtml($trackingCode));
         try {
-            $request = new Request();
-            $this->crawler = new Crawler($request->getHtml($trackingCode));
+            $error = $this->crawler
+                ->filter(self::ERROR_TABLE)
+                ->attr('class');
+            $this->exist = false;
+            $this->delivered = false;
+            $this->tracking = $trackingCode;
+        } catch (\InvalidArgumentException $e) {
             $this->exist = true;
             $this->delivered = false;
             $this->tracking = $trackingCode;
-        } catch (Exception $e) {
-            $this->exist = false;
         }
     }
 
@@ -45,21 +51,24 @@ class Domcrawler
 
     private function getHistory()
     {
-        $crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();
-        return $this->extractHistory($crawler);
+        if ($this->exist) {
+            $crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();
+            return $this->extractHistory($crawler);
+        }
+        return [];
     }
 
     private function parseDeliveryTable()
     {
-        try {
-            $crawler = $this->crawler
-            ->filter(self::DELIVERY_TABLE)
-            ->eq(0);
+        $crawler = $this->crawler
+        ->filter(self::DELIVERY_TABLE)
+        ->eq(0);
 
-            $deliveredDate = $this->extractDate($crawler);
-            $deliveredTo = $this->extractName($crawler);
-            $deliveredToRut = $this->extractRut($crawler);
-    
+        $deliveredDate = $this->extractDate($crawler);
+        $deliveredTo = $this->extractName($crawler);
+        $deliveredToRut = $this->extractRut($crawler);
+
+        if (!is_null($deliveredDate)) {
             $this->delivered = true;
 
             return [
@@ -67,20 +76,22 @@ class Domcrawler
                 'deliveredTo' => $deliveredTo,
                 'deliveredToRut' => $deliveredToRut,
             ];
-        } catch (Exception $e) {
-            return [];
         }
+        return [];
     }
 
     private function parseGeneralTable()
     {
-        $crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();
-        $data = $this->extractData($crawler);
+        if ($this->exist) {
+            $crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();
+            $data = $this->extractData($crawler);
 
-        return [
-            'sendingStatus' => $data['sendingStatus'],
-            'sendingDate' => $data['sendingDate'],
-        ];
+            return [
+                'sendingStatus' => $data['sendingStatus'],
+                'sendingDate' => $data['sendingDate'],
+            ];
+        }
+        return [];
     }
 
     private function extractDate($crawler)
@@ -135,7 +146,6 @@ class Domcrawler
                 ];
             }
         }
-        
     }
 
     private function extractHistory($crawler)

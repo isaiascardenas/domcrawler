@@ -1,9 +1,10 @@
 <?php
 
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use IsaiasCardenas\CorreosChile\Domcrawler;
 
-$domCrawler = new Domcrawler('RT993112324DE');
+$domCrawler = new Domcrawler('RE127140035DE');
 
-var_dump($domCrawler->getData());
+$json = json_decode($domCrawler->getData());
+echo json_encode($json, JSON_PRETTY_PRINT);
