@@ -46,4 +46,3 @@ Una petición en la que el código de tracking no exista tendrá la siguiente es
 * [Guzzle](https://github.com/guzzle/guzzle)
 * [DomCrawler](https://github.com/symfony/DomCrawler)
 * [Css-Selector](https://github.com/symfony/css-selector)
-
