@@ -8,7 +8,9 @@ domcrawler correos chile
 composer require isaiascardenas/correoschile
 ```
 
-## Uso (PHP)
+## Uso
+
+La clase 'Domcrawler' tiene un único método público 'getData()' el cual no requiere parámetros.
 
 ```php
 require 'vendor/autoload.php';
@@ -20,7 +22,7 @@ var_dump($domCrawler->getData());
 
 ## Salida
 
-Una petición exitosa se retorna un objeto json con 5 atributos:
+Una petición exitosa se retorna un objeto JSON con 5 atributos:
 
 * exist: Es un booleano que representa se existe o no el código tracking.
 * delivered: Es un booleano que representa si el tracking fue entregado o no.
@@ -28,7 +30,6 @@ Una petición exitosa se retorna un objeto json con 5 atributos:
 * data: Es un json que contiene el ultimo estado del tracking y los datos de entrega si existen.
 * history: Es un json que contiene todo el historial del seguimiento del tracking.
 
-<<<<<<< HEAD
 ![Output](/screenshots/output1.png?raw=true "Sii respuesta")
 
 En caso de que el tracking no haya sido entregado aun el json tendría la siguiente forma:
@@ -38,17 +39,6 @@ En caso de que el tracking no haya sido entregado aun el json tendría la siguie
 Una petición en la que el código de tracking no exista tendrá la siguiente estructura:
 
 ![Output](/screenshots/output3.png?raw=true "Sii respuesta")
-=======
-![Output](/screenshots/output.png?raw=true "Sii respuesta")
-
-En caso de que el tracking no haya sido entregado aun el json tendría la siguiente forma:
-
-![Output](/screenshots/output.png?raw=true "Sii respuesta")
-
-Una petición en la que el código de tracking no exista tendrá la siguiente estructura:
-
-![Output](/screenshots/output.png?raw=true "Sii respuesta")
->>>>>>> 6fe31cae05956b56bf43853359978b71ea26d4a7
 
 
 ## Dependencias
@@ -56,7 +46,4 @@ Una petición en la que el código de tracking no exista tendrá la siguiente es
 * [Guzzle](https://github.com/guzzle/guzzle)
 * [DomCrawler](https://github.com/symfony/DomCrawler)
 * [Css-Selector](https://github.com/symfony/css-selector)
-<<<<<<< HEAD
-=======
 
->>>>>>> 6fe31cae05956b56bf43853359978b71ea26d4a7
