@@ -1,6 +1,8 @@
 {
     "name": "isaiascardenas/correoschile",
     "description": "domcrawler correos chile",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "IsaiasCardenas",
