@@ -8,7 +8,9 @@ domcrawler correos chile
 composer require isaiascardenas/correoschile
 ```
 
-## Uso (PHP)
+## Uso
+
+La clase 'Domcrawler' tiene un único método público 'getData()' el cual no requiere parámetros.
 
 ```php
 require 'vendor/autoload.php';
@@ -20,7 +22,7 @@ var_dump($domCrawler->getData());
 
 ## Salida
 
-Una petición exitosa se retorna un objeto json con 5 atributos:
+Una petición exitosa se retorna un objeto JSON con 5 atributos:
 
 * exist: Es un booleano que representa se existe o no el código tracking.
 * delivered: Es un booleano que representa si el tracking fue entregado o no.
