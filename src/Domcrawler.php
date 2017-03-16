@@ -1,8 +1,8 @@
 <?php
 
-namespace IsaiasCardenas\CorreosChile;
+namespace IsaiasCardenas\Domcrawler;
 
-use IsaiasCardenas\CorreosChile\Request;
+use IsaiasCardenas\Domcrawler\Request;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Domcrawler

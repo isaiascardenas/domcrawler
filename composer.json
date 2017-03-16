@@ -1,6 +1,6 @@
 {
-    "name": "isaiascardenas/correoschile",
-    "description": "domcrawler correos chile",
+    "name": "isaiascardenas/domcrawler",
+    "description": "domcrawler for trackingapp",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "IsaiasCardenas\\CorreosChile\\": "src/"
+            "IsaiasCardenas\\Domcrawler\\": "src/"
         }
     }
 }
