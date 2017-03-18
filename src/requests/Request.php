@@ -1,6 +1,6 @@
 <?php
 
-namespace IsaiasCardenas\Domcrawler;
+namespace IsaiasCardenas\Domcrawler\requests;
 
 use GuzzleHttp\Client;
 

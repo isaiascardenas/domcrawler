@@ -2,15 +2,28 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// use IsaiasCardenas\CorreosChile\Domcrawler;
+// Plugin Test
 
-// $domCrawler = new Domcrawler('RE127140035DE');
+use IsaiasCardenas\Domcrawler\Domcrawler;
 
-// $json = json_decode($domCrawler->getData());
+$domCrawler = new Domcrawler();
+$json = json_decode($domCrawler->parse('RT914943865HK', 'correos'));
+echo json_encode($json, JSON_PRETTY_PRINT);
+
+//__Domcrawler Test__
+
+// use IsaiasCardenas\Domcrawler\domcrawlers\CorreosDomcrawler;
+// use IsaiasCardenas\Domcrawler\domcrawlers\ChilexpressDomcrawler;
+
+// $domCrawler = new ChilexpressDomcrawler('99605900472');
+// $json = json_decode($domCrawler->parse());
 // echo json_encode($json, JSON_PRETTY_PRINT);
-use IsaiasCardenas\Domcrawler\CorreosRequest;
 
-$test = new CorreosRequest();
-var_dump($test->getHtml('RE127140035DE'));
+//__Request Test__
 
-// echo $test->getHtml('RE127140035DE');
+// use IsaiasCardenas\Domcrawler\requests\CorreosRequest;
+// use IsaiasCardenas\Domcrawler\requests\ChilexpressRequest;
+// use IsaiasCardenas\Domcrawler\requests\StarkenRequest;
+
+// $request = new StarkenRequest();
+// var_dump($request->getHtml('99605900472'));

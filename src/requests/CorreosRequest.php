@@ -1,8 +1,8 @@
 <?php
 
-namespace IsaiasCardenas\Domcrawler;
+namespace IsaiasCardenas\Domcrawler\requests;
 
-use IsaiasCardenas\Domcrawler\Request;
+use IsaiasCardenas\Domcrawler\requests\Request;
 
 class CorreosRequest extends Request
 {
