@@ -4,6 +4,7 @@ namespace IsaiasCardenas\Domcrawler;
 
 use IsaiasCardenas\Domcrawler\domcrawlers\CorreosDomcrawler;
 use IsaiasCardenas\Domcrawler\domcrawlers\ChilexpressDomcrawler;
+use IsaiasCardenas\Domcrawler\domcrawlers\StarkenDomcrawler;
 
 class Domcrawler
 {
@@ -14,6 +15,7 @@ class Domcrawler
 		$this->crawlers = [
 			'correos' => CorreosDomcrawler::class,
 			'chilexpress' => ChilexpressDomcrawler::class,
+			'starken' => StarkenDomcrawler::class,
 		];
 	}
 

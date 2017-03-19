@@ -4,14 +4,10 @@ namespace IsaiasCardenas\Domcrawler\domcrawlers;
 
 use IsaiasCardenas\Domcrawler\requests\CorreosRequest;
 use Symfony\Component\DomCrawler\Crawler;
-use IsaiasCardenas\Domcrawler\domcrawlers\CrawlerInterface;
+use IsaiasCardenas\Domcrawler\domcrawlers\AbstractCrawler;
 
-class CorreosDomcrawler implements CrawlerInterface
+class CorreosDomcrawler extends AbstractCrawler
 {
-	private $crawler;
-	private $delivered;
-	private $exist;
-	private $tracking;
 	const GENERAL_TABLE = '#pnlEnvio > table';
 	const DELIVERY_TABLE = '#Panel_Entrega > table';
 	const ERROR_TABLE = '#pnlError > font';
@@ -34,23 +30,7 @@ class CorreosDomcrawler implements CrawlerInterface
 		}
 	}
 
-	public function parse()
-	{
-		$data = [
-			'general_table' => $this->parseGeneralTable(),
-			'delivery_table' => $this->parseDeliveryTable(),
-		];
-
-		return json_encode([
-			'exist' => $this->exist,
-			'delivered' => $this->delivered,
-			'tracking_number' => $this->tracking,
-			'data' => $data,
-			'history' => $this->getHistory(),
-		]);
-	}
-
-	public function getHistory()
+	protected function getHistory()
 	{
 		if ($this->exist) {
 			$crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();
@@ -59,7 +39,7 @@ class CorreosDomcrawler implements CrawlerInterface
 		return [];
 	}
 
-	private function parseDeliveryTable()
+	protected function parseDeliveryTable()
 	{
 		$crawler = $this->crawler
 		->filter(self::DELIVERY_TABLE)
@@ -81,7 +61,7 @@ class CorreosDomcrawler implements CrawlerInterface
 		return [];
 	}
 
-	private function parseGeneralTable()
+	protected function parseGeneralTable()
 	{
 		if ($this->exist) {
 			$crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();

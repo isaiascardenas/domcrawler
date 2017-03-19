@@ -4,14 +4,10 @@ namespace IsaiasCardenas\Domcrawler\domcrawlers;
 
 use IsaiasCardenas\Domcrawler\requests\ChilexpressRequest;
 use Symfony\Component\DomCrawler\Crawler;
-use IsaiasCardenas\Domcrawler\domcrawlers\CrawlerInterface;
+use IsaiasCardenas\Domcrawler\domcrawlers\AbstractCrawler;
 
-class ChilexpressDomcrawler implements CrawlerInterface
+class ChilexpressDomcrawler extends AbstractCrawler
 {
-	private $crawler;
-	private $delivered;
-	private $exist;
-	private $tracking;
 	const GENERAL_TABLE = '#organic-content > table';
 	const DELIVERY_TABLE = '#organic-content > section';
 	const DELIVERY_TABLE_PATH = 'div > ul > li > ul';
@@ -34,23 +30,7 @@ class ChilexpressDomcrawler implements CrawlerInterface
 		}
 	}
 
-	public function parse()
-	{
-		$data = [
-			'general_table' => $this->parseGeneralTable(),
-			'delivery_table' => $this->parseDeliveryTable(),
-		];
-
-		return json_encode([
-			'exist' => $this->exist,
-			'delivered' => $this->delivered,
-			'tracking_number' => $this->tracking,
-			'data' => $data,
-			'history' => $this->getHistory(),
-		]);
-	}
-
-	public function getHistory()
+	protected function getHistory()
 	{
 		if ($this->exist) {
 			$crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();
@@ -59,7 +39,7 @@ class ChilexpressDomcrawler implements CrawlerInterface
 		return [];
 	}
 
-	private function parseDeliveryTable()
+	protected function parseDeliveryTable()
 	{
 		try {
 			$crawler = $this->crawler
@@ -86,7 +66,7 @@ class ChilexpressDomcrawler implements CrawlerInterface
 		}
 	}
 
-	private function parseGeneralTable()
+	protected function parseGeneralTable()
 	{
 		if ($this->exist) {
 			$crawler = $this->crawler->filter(self::GENERAL_TABLE)->children();

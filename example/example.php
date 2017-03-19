@@ -7,18 +7,17 @@ require __DIR__ . '/../vendor/autoload.php';
 use IsaiasCardenas\Domcrawler\Domcrawler;
 
 $domCrawler = new Domcrawler();
-$json = json_decode($domCrawler->parse('RT914943865HK', 'correos'));
+$json = json_decode($domCrawler->parse('905619194', 'starken'));
 echo json_encode($json, JSON_PRETTY_PRINT);
 
 //__Domcrawler Test__
 
 // use IsaiasCardenas\Domcrawler\domcrawlers\CorreosDomcrawler;
 // use IsaiasCardenas\Domcrawler\domcrawlers\ChilexpressDomcrawler;
+// use IsaiasCardenas\Domcrawler\domcrawlers\StarkenDomcrawler;
 
-// $domCrawler = new ChilexpressDomcrawler('99605900472');
-// $json = json_decode($domCrawler->parse());
-// echo json_encode($json, JSON_PRETTY_PRINT);
-
+// $domCrawler = new StarkenDomcrawler('905619194');
+// var_dump($domCrawler->test());
 //__Request Test__
 
 // use IsaiasCardenas\Domcrawler\requests\CorreosRequest;
@@ -26,4 +25,4 @@ echo json_encode($json, JSON_PRETTY_PRINT);
 // use IsaiasCardenas\Domcrawler\requests\StarkenRequest;
 
 // $request = new StarkenRequest();
-// var_dump($request->getHtml('99605900472'));
+// var_dump($request->getHtml('905619194'));
