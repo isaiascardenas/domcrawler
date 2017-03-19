@@ -1,11 +1,11 @@
 # domcrawler
 
-domcrawler correos chile
+domcrawler for trackingapp
 
 ## Instalación
 
 ```
-composer require isaiascardenas/correoschile
+composer require isaiascardenas/domcrawler
 ```
 
 ## Uso
