@@ -9,7 +9,7 @@ use IsaiasCardenas\Domcrawler\domcrawlers\AbstractCrawler;
 class CorreosDomcrawler extends AbstractCrawler
 {
 	const GENERAL_TABLE = '#pnlEnvio > table';
-	const DELIVERY_TABLE = '#Panel_Entrega > table';
+	const DELIVERY_TABLE = '#Panel_Entrega > table';	
 	const ERROR_TABLE = '#pnlError > font';
 
 	public function __construct($trackingCode)

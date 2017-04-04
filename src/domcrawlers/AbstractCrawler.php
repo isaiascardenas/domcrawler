@@ -13,7 +13,7 @@ abstract class AbstractCrawler
   abstract protected function parseDeliveryTable();
 	abstract protected function getHistory();
 
-	public function parse()
+	public function getData()
 	{
 		$data = [
 			'general_table' => $this->parseGeneralTable(),

@@ -5,23 +5,20 @@ namespace IsaiasCardenas\Domcrawler;
 use IsaiasCardenas\Domcrawler\domcrawlers\CorreosDomcrawler;
 use IsaiasCardenas\Domcrawler\domcrawlers\ChilexpressDomcrawler;
 use IsaiasCardenas\Domcrawler\domcrawlers\StarkenDomcrawler;
+use IsaiasCardenas\Domcrawler\domcrawlers\DhlGlobalMailDomcrawler;
 
 class Domcrawler
 {
-	private $crawlers;
+	private static $crawlers  = [
+		'correos' => CorreosDomcrawler::class,
+		'chilexpress' => ChilexpressDomcrawler::class,
+		'starken' => StarkenDomcrawler::class,
+		'dhlgm' => DhlGlobalMailDomcrawler::class,
+	];
 
-	public function __construct()
+	public static function parse($trackingCode, $platform)
 	{
-		$this->crawlers = [
-			'correos' => CorreosDomcrawler::class,
-			'chilexpress' => ChilexpressDomcrawler::class,
-			'starken' => StarkenDomcrawler::class,
-		];
-	}
-
-	public function parse($trackingCode, $platform)
-	{
-		$domcrawler = new $this->crawlers[$platform]($trackingCode);
-		return $domcrawler->parse();
+		$domcrawler = new self::$crawlers[$platform]($trackingCode);
+		return $domcrawler->getData();
 	}
 }

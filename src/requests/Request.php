@@ -4,7 +4,7 @@ namespace IsaiasCardenas\Domcrawler\requests;
 
 use GuzzleHttp\Client;
 
-class Request
+abstract class Request
 {
 	protected $client;
 		
@@ -13,13 +13,6 @@ class Request
 		$this->client = new Client();
 	}
 
-	public function getHtml($trackingNumber)
-	{
-		
-	}
-
-	protected function get($url, $trackingNumber)
-	{
-			
-	}
+	abstract public function getHtml($trackingNumber);
+	abstract protected function get($url, $trackingNumber);
 }
