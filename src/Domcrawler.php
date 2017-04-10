@@ -13,11 +13,12 @@ class Domcrawler
 		'correos' => CorreosDomcrawler::class,
 		'chilexpress' => ChilexpressDomcrawler::class,
 		'starken' => StarkenDomcrawler::class,
+		'dhlgm' => DhlGlobalMailDomcrawler::class,
 	];
 
 	static public function parse($trackingCode, $platform)
 	{
 		$domcrawler = new self::$crawlers[$platform]($trackingCode);
-		return $domcrawler->parse();
+		return $domcrawler->getData();
 	}
 }
