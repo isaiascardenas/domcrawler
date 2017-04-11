@@ -14,13 +14,7 @@ La clase 'Domcrawler' tiene un único método público y estático 'parse()' el 
 
 * tracking code: el código de tracking o seguimiento.
 
-* platform: plataforma de tracking, actualmente soporta:
-
-** correos: Correos de Chile
-** chilexpress: Chilexpress
-** starken: Starken
-** dhlgm: Dhl GlobalMail
-
+* platform: plataforma de tracking.
 
 
 ```php
@@ -30,6 +24,16 @@ use IsaiasCardenas\Domcrawler\Domcrawler;
 
 var_dump(Domcrawler::parse('RT914943865HK', 'correos'));
 ```
+
+## Plataformas
+
+Actualmente éste paquete soporta las siguientes plataformas:
+
+
+* correos: Correos de Chile
+* chilexpress: Chilexpress
+* starken: Starken
+* dhlgm: Dhl GlobalMail
 
 ## Salida
 
