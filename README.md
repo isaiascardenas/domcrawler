@@ -10,14 +10,25 @@ composer require isaiascardenas/domcrawler
 
 ## Uso
 
-La clase 'Domcrawler' tiene un único método público 'getData()' el cual no requiere parámetros.
+La clase 'Domcrawler' tiene un único método público y estático 'parse()' el cual requiere dos parámetros string:
+
+* tracking code: el código de tracking o seguimiento.
+
+* platform: plataforma de tracking, actualmente soporta:
+
+** correos: Correos de Chile
+** chilexpress: Chilexpress
+** starken: Starken
+** dhlgm: Dhl GlobalMail
+
+
 
 ```php
 require 'vendor/autoload.php';
 
-$domCrawler = new IsaiasCardenas\CorreosChile\Domcrawler('RT993112324DE');
+use IsaiasCardenas\Domcrawler\Domcrawler;
 
-var_dump($domCrawler->getData());
+var_dump(Domcrawler::parse('RT914943865HK', 'correos'));
 ```
 
 ## Salida
